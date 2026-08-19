@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap");
+@font-face {
+  font-family: Mirador;
+  src: url("./assets/fonts/Mirador-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Mirador;
+  src: url("./assets/fonts/Mirador-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Mirador;
+  src: url("./assets/fonts/Mirador-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Mirador;
+  src: url("./assets/fonts/Mirador-Semi-Bold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Mirador;
+  src: url("./assets/fonts/Mirador-Regular-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+:root {
+  --pitf-bg-deep: #020c1a;
+  --pitf-bg-black: #040a13;
+  --pitf-black: #05080d;
+  --pitf-bg-secondary: #060c14;
+  --pitf-navy: #07182b;
+  --pitf-gold-light: #c99a50;
+  --pitf-gold: #b8863b;
+  --pitf-gold-soft: #efc686;
+  --pitf-white: #f8f8f8;
+  color: var(--pitf-white);
+  background: var(--pitf-bg-black);
+  font-family: Outfit, Arial, sans-serif;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--pitf-bg-black);
+}
+button,
+input {
+  font: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+:focus-visible {
+  outline: 2px solid var(--pitf-gold-soft);
+  outline-offset: 4px;
+}
+::selection {
+  color: var(--pitf-black);
+  background: var(--pitf-gold-soft);
+}
