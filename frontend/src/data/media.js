@@ -3,7 +3,7 @@ export const media = [
   {
     id: "media-hero",
     type: "image",
-    src: "/assets/hero-background.png",
+    src: `${import.meta.env.BASE_URL}assets/hero-background.png`,
     alt: "PITF opening ceremony at AAB Theatre",
     caption: null,
     credit: null,
@@ -12,7 +12,7 @@ export const media = [
   {
     id: "media-about",
     type: "image",
-    src: "/assets/about-pic.jpg",
+    src: `${import.meta.env.BASE_URL}assets/about-pic.jpg`,
     alt: "A dramatic PITF stage performance",
     caption: null,
     credit: null,
@@ -21,7 +21,7 @@ export const media = [
   {
     id: "media-edition-10",
     type: "image",
-    src: "/assets/theatre-image.png",
+    src: `${import.meta.env.BASE_URL}assets/theatre-image.png`,
     alt: "An empty theatre stage prepared for PITF",
     caption: null,
     credit: null,

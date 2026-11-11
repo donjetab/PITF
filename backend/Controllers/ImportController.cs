@@ -1,0 +1,3 @@
+using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;using PITF.Api.Data;using PITF.Api.Import;
+namespace PITF.Api.Controllers;
+[ApiController,Route("api/admin/import"),Authorize(Policy="AdminOnly")]public sealed class ImportController(HistoricalArchiveImporter importer,IWebHostEnvironment env):ControllerBase{[HttpPost("pitf")]public async Task<IActionResult>Run(CancellationToken ct){var standard=Path.Combine(env.ContentRootPath,"import","pitf");var repository=Path.GetFullPath(Path.Combine(env.ContentRootPath,"..","frontend","src","News"));var root=Directory.Exists(standard)&&Directory.EnumerateFiles(standard,"*.json",SearchOption.AllDirectories).Any()?standard:repository;return Ok(await importer.RunAsync(root,ct));}}

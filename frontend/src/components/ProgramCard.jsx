@@ -2,11 +2,20 @@ export function ProgramCard({ item }) {
   const date = new Date(item.startsAt);
   return (
     <article className="program-card">
-      <div className="program-card__image">
-        <img src={item.imageSrc} alt={`${item.title} performance`} />
+      <div
+        className={`program-card__image${item.imageSrc ? " program-card__image--photo" : ""}`}
+      >
+        {item.imageSrc ? (
+          <img src={item.imageSrc} alt={`${item.title} cover`} />
+        ) : (
+          <div className="program-card__placeholder" aria-label="Cover coming soon">
+            <span>10</span>
+            <small>Cover coming soon</small>
+          </div>
+        )}
       </div>
       <div className="program-card__body">
-        <p className="card-label">{item.country}</p>
+        <p className="card-label">{[item.country, item.participationType].filter(Boolean).join(" · ")}</p>
         <h3>{item.title}</h3>
         <p>
           {item.company}

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 export function HeroSection({ content }) {
   return (
-    <section className="hero-section">
+    <section className="hero-section" style={content.imageSrc ? { "--hero-image": `url("${content.imageSrc}")` } : undefined}>
       <div className="hero-content">
-        <h1>
+        <h1 className="hero-title-animated">
           {content.titleParts.map((part) => (
             <span key={part} className="hero-title-line">
               {part.split(" ").map((word) => (
@@ -17,8 +17,8 @@ export function HeroSection({ content }) {
           ))}
         </h1>
         <p>{content.description}</p>
-        <Link className="outline-button" to="/about">
-          Discover more
+        <Link className="outline-button" to={content.ctaUrl || "/about"}>
+          {content.ctaText || "Discover more"}
         </Link>
       </div>
     </section>

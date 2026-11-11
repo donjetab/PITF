@@ -5,3 +5,16 @@ backend/obj/
 .vs/
 .idea/
 *.user
+backend/wwwroot/uploads/
+backend/import-*.log
+backend/.translation-tools/
+backend/.tmp-*/
+verification/**/bin/
+verification/**/obj/
+
+frontend/.static-export-cache/
+
+
+# Exclude only the two oversized PITF videos
+/frontend/src/News/PITF-2019-split/2019/2019-11-16-pitf2019-concludes-with-a-grand-awards-ceremony/ceremonia.mp4
+/frontend/src/News/PITF-2021-renamed-media/2021/2021-11-30-ne-nderim-te-burbuqe-berishes-pitf-2021-nis-me-shfaqjen-bretkosa/AQNWyzzL8c_nEK6EfY2DOhR5QrfpHED3kl2XHXI1-xAj0M8WXWWox9RIbFN7RWMZgVsZH9uCCZ95S2L46vkg6UPBB3H4oCVN0uA.mp4

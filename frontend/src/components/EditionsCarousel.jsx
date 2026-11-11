@@ -1,27 +1,34 @@
-import { useState } from "react";
-export function EditionsCarousel({ editions }) {
-  const [active, setActive] = useState(editions.length - 1);
-  const move = (direction) =>
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+export function EditionsCarousel({ editions, title = "All PITF Editions" }) {
+  const orderedEditions = [...editions].sort((first, second) => second.number - first.number || second.year - first.year);
+  const [active, setActive] = useState(0);
+  const lastMoveAt = useRef(Number.NEGATIVE_INFINITY);
+  const move = (direction) => {
+    const now = performance.now();
+    if (now - lastMoveAt.current < 480) return;
+    lastMoveAt.current = now;
     setActive(
-      (index) => (index + direction + editions.length) % editions.length,
+      (index) => (index + direction + orderedEditions.length) % orderedEditions.length,
     );
+  };
   const offsetFor = (index) => {
     let d = index - active;
-    if (d > editions.length / 2) d -= editions.length;
-    if (d < -editions.length / 2) d += editions.length;
+    if (d > orderedEditions.length / 2) d -= orderedEditions.length;
+    if (d < -orderedEditions.length / 2) d += orderedEditions.length;
     return d;
   };
   return (
     <section className="editions-section">
       <div
         className="edition-backdrop"
-        key={editions[active].id}
+        key={orderedEditions[active].id}
         style={{
-          backgroundImage: `linear-gradient(#020c1acc,#020c1af5),url("${editions[active].bannerSrc}")`,
+          backgroundImage: `url("${orderedEditions[active].detailHeaderSrc || orderedEditions[active].bannerSrc}")`,
         }}
       />
       <div className="section-shell">
-        <h2>All PITF Editions</h2>
+        <h2>{title}</h2>
         <div
           className="carousel"
           aria-roledescription="carousel"
@@ -31,14 +38,14 @@ export function EditionsCarousel({ editions }) {
             ‹
           </button>
           <div className="carousel__stage">
-            {editions.map((edition, index) => {
+            {orderedEditions.map((edition, index) => {
               const offset = offsetFor(index);
               return (
                 Math.abs(offset) <= 2 && (
-                  <button
+                  <Link
                     key={edition.id}
                     className={`edition-card offset-${offset}`}
-                    onClick={() => setActive(index)}
+                    to={`/editions/${edition.slug}`}
                     aria-current={index === active ? "true" : undefined}
                   >
                     <img
@@ -48,7 +55,7 @@ export function EditionsCarousel({ editions }) {
                     />
                     <b>{edition.title}</b>
                     {edition.year && <i>{edition.year}</i>}
-                  </button>
+                  </Link>
                 )
               );
             })}
@@ -58,7 +65,7 @@ export function EditionsCarousel({ editions }) {
           </button>
         </div>
         <div className="carousel-dots" aria-hidden="true">
-          {editions.map((item, index) => (
+          {orderedEditions.map((item, index) => (
             <span key={item.id} className={index === active ? "active" : ""} />
           ))}
         </div>

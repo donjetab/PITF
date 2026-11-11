@@ -7,7 +7,7 @@ export function AboutPreview({ content }) {
     <section id="about" className="about section-shell">
       <img
         className="about__image"
-        src="/assets/theatre-image.png"
+        src={content.imageSrc || `${import.meta.env.BASE_URL}assets/theatre-image.png`}
         alt="An empty PITF theatre stage"
       />
 
